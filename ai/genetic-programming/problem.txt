@@ -1,0 +1,9 @@
+Utilitzant programació genetica, crea un algorisme que trobi una possible solució del problema de les 8 reinas (https://en.wikipedia.org/wiki/Eight_queens_puzzle) generalitzada per taules d’escacs de NxN.
+
+Hi ha moltes maneres d’aproximar aquest problema. intenta establir el Gen de l'individu solució de manera adient.
+
+I utilitza un fitness score de manera que la millor solució tingui un valor 0.
+
+
+Utilitza els apunts de classe per tal de realitzar tots els passos d’un algoritme genetic:
+	reproducció, mutació, selecció…
