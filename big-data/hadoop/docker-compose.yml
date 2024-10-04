@@ -4,6 +4,7 @@ services:
     hostname: namenode
     volumes:
       - ./Makefile:/opt/hadoop/Makefile
+      - ./entrypoint.sh:/opt/hadoop/entrypoint.sh
     ports:
       - 9870:9870
     env_file:
