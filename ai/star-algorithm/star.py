@@ -3,9 +3,9 @@ import time
 from queue import PriorityQueue
 from math import sqrt
 
-ROWS = 50
-COLS = 50
-POSSIBLE_PATHS = 0 # 0 => only 1 path | 99 (max) => multiple paths
+ROWS = 100
+COLS = 100
+POSSIBLE_PATHS = 10 # 0 => only 1 path | 99 (max) => multiple paths
 
 # Euclidean distance
 def distanceEuclidean(cell1, cell2):
