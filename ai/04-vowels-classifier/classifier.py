@@ -26,7 +26,7 @@ def extract_vowel_times_from_letters(textgrid_path):
                         # Calculamos el tiempo de inicio y fin de cada vocal
                         # Aproximación: distribuye el tiempo entre las letras de la palabra
                         char_start = word_start + (i / len(word)) * (word_end - word_start)
-                        char_end = word_start + ((i + 1) / len(word)) * (word_end - word_start)
+                        char_end = word_start + ((i + 3) / len(word)) * (word_end - word_start)
 
                         vowel_data.append({
                             "vocal": char,
