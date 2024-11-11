@@ -1,5 +1,6 @@
 import textgrid
 import json
+from unidecode import unidecode
 
 # Lista de vocales con y sin acento
 vocales = ["a", "e", "i", "o", "u", "á", "é", "í", "ó", "ú"]
@@ -26,18 +27,18 @@ def extract_vowel_times_from_letters(textgrid_path):
                         # Calculamos el tiempo de inicio y fin de cada vocal
                         # Aproximación: distribuye el tiempo entre las letras de la palabra
                         char_start = word_start + (i / len(word)) * (word_end - word_start)
-                        char_end = word_start + ((i + 3) / len(word)) * (word_end - word_start)
+                        char_end = word_start + ((i + 1) / len(word)) * (word_end - word_start)
 
                         vowel_data.append({
-                            "vocal": char,
-                            "start": round(char_start, 2),
-                            "end": round(char_end, 2)
+                            "vocal": unidecode(char),
+                            "start": str(round(char_start, 2)),
+                            "end": str(round(char_end, 2))
                         })
 
     return vowel_data
 
 # Ruta al archivo TextGrid generado por MFA
-textgrid_path = "mfa/output/audio.TextGrid"
+textgrid_path = "mfa/output/dani.TextGrid"
 
 # Extraer las vocales y sus tiempos a nivel de letra
 vowel_data = extract_vowel_times_from_letters(textgrid_path)

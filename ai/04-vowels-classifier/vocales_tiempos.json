@@ -1,822 +1,822 @@
 [
     {
         "vocal": "i",
-        "start": 0.83,
-        "end": 0.97
+        "start": "0.52",
+        "end": "0.58"
     },
     {
         "vocal": "e",
-        "start": 0.88,
-        "end": 1.01
+        "start": "0.58",
+        "end": "0.64"
     },
     {
         "vocal": "a",
-        "start": 1.06,
-        "end": 1.19
+        "start": "0.81",
+        "end": "0.87"
     },
     {
         "vocal": "e",
-        "start": 1.21,
-        "end": 1.39
+        "start": "0.98",
+        "end": "1.02"
     },
     {
         "vocal": "i",
-        "start": 1.27,
-        "end": 1.42
+        "start": "1.02",
+        "end": "1.08"
     },
     {
         "vocal": "a",
-        "start": 1.37,
-        "end": 1.52
+        "start": "1.13",
+        "end": "1.19"
     },
     {
         "vocal": "o",
-        "start": 1.49,
-        "end": 1.71
+        "start": "1.27",
+        "end": "1.34"
     },
     {
         "vocal": "i",
-        "start": 1.64,
-        "end": 1.85
+        "start": "1.42",
+        "end": "1.5"
     },
     {
         "vocal": "e",
-        "start": 1.71,
-        "end": 1.93
+        "start": "1.5",
+        "end": "1.57"
     },
     {
         "vocal": "o",
-        "start": 1.93,
-        "end": 2.15
+        "start": "1.72",
+        "end": "1.8"
     },
     {
         "vocal": "o",
-        "start": 2.23,
-        "end": 2.37
+        "start": "1.94",
+        "end": "2.0"
     },
     {
         "vocal": "a",
-        "start": 2.37,
-        "end": 2.52
+        "start": "2.1",
+        "end": "2.16"
     },
     {
         "vocal": "a",
-        "start": 2.47,
-        "end": 2.62
+        "start": "2.22",
+        "end": "2.29"
     },
     {
         "vocal": "e",
-        "start": 2.62,
-        "end": 2.77
+        "start": "2.42",
+        "end": "2.48"
     },
     {
         "vocal": "u",
-        "start": 2.76,
-        "end": 3.02
+        "start": "2.55",
+        "end": "2.62"
     },
     {
         "vocal": "i",
-        "start": 2.93,
-        "end": 3.2
+        "start": "2.7",
+        "end": "2.77"
     },
     {
         "vocal": "a",
-        "start": 3.02,
-        "end": 3.29
+        "start": "2.77",
+        "end": "2.84"
     },
     {
         "vocal": "a",
-        "start": 3.11,
-        "end": 3.31
+        "start": "2.84",
+        "end": "2.9"
     },
     {
         "vocal": "e",
-        "start": 3.31,
-        "end": 3.5
+        "start": "3.0",
+        "end": "3.06"
     },
     {
         "vocal": "i",
-        "start": 3.48,
-        "end": 3.81
+        "start": "3.19",
+        "end": "3.32"
     },
     {
         "vocal": "a",
-        "start": 3.82,
-        "end": 4.0
+        "start": "4.13",
+        "end": "4.21"
     },
     {
         "vocal": "i",
-        "start": 3.93,
-        "end": 4.09
+        "start": "4.27",
+        "end": "4.32"
     },
     {
         "vocal": "i",
-        "start": 4.09,
-        "end": 4.25
+        "start": "4.44",
+        "end": "4.49"
     },
     {
         "vocal": "a",
-        "start": 4.15,
-        "end": 4.31
+        "start": "4.49",
+        "end": "4.55"
     },
     {
         "vocal": "e",
-        "start": 4.28,
-        "end": 4.52
+        "start": "4.61",
+        "end": "4.67"
     },
     {
         "vocal": "a",
-        "start": 4.52,
-        "end": 4.76
+        "start": "4.8",
+        "end": "4.86"
     },
     {
         "vocal": "e",
-        "start": 5.22,
-        "end": 5.49
+        "start": "5.08",
+        "end": "5.23"
     },
     {
         "vocal": "e",
-        "start": 5.35,
-        "end": 5.47
+        "start": "5.28",
+        "end": "5.33"
     },
     {
         "vocal": "o",
-        "start": 5.39,
-        "end": 5.54
+        "start": "5.33",
+        "end": "5.39"
     },
     {
         "vocal": "u",
-        "start": 5.49,
-        "end": 5.64
+        "start": "5.46",
+        "end": "5.52"
     },
     {
         "vocal": "i",
-        "start": 5.64,
-        "end": 5.79
+        "start": "5.65",
+        "end": "5.71"
     },
     {
         "vocal": "a",
-        "start": 5.69,
-        "end": 5.84
+        "start": "5.71",
+        "end": "5.78"
     },
     {
         "vocal": "e",
-        "start": 5.86,
-        "end": 6.07
+        "start": "5.91",
+        "end": "5.98"
     },
     {
         "vocal": "a",
-        "start": 6.07,
-        "end": 6.28
+        "start": "6.12",
+        "end": "6.19"
     },
     {
         "vocal": "i",
-        "start": 6.21,
-        "end": 6.42
+        "start": "6.25",
+        "end": "6.32"
     },
     {
         "vocal": "e",
-        "start": 6.28,
-        "end": 6.49
+        "start": "6.32",
+        "end": "6.39"
     },
     {
         "vocal": "o",
-        "start": 6.49,
-        "end": 6.7
+        "start": "6.53",
+        "end": "6.6"
     },
     {
         "vocal": "e",
-        "start": 7.05,
-        "end": 7.19
+        "start": "7.1",
+        "end": "7.13"
     },
     {
         "vocal": "o",
-        "start": 7.15,
-        "end": 7.28
+        "start": "7.16",
+        "end": "7.19"
     },
     {
         "vocal": "e",
-        "start": 7.19,
-        "end": 7.35
+        "start": "7.19",
+        "end": "7.24"
     },
     {
         "vocal": "a",
-        "start": 7.29,
-        "end": 7.45
+        "start": "7.29",
+        "end": "7.33"
     },
     {
         "vocal": "e",
-        "start": 7.45,
-        "end": 7.62
+        "start": "7.43",
+        "end": "7.48"
     },
     {
         "vocal": "a",
-        "start": 7.62,
-        "end": 7.78
+        "start": "7.59",
+        "end": "7.64"
     },
     {
         "vocal": "i",
-        "start": 7.73,
-        "end": 7.89
+        "start": "7.7",
+        "end": "7.75"
     },
     {
         "vocal": "e",
-        "start": 7.78,
-        "end": 7.94
+        "start": "7.75",
+        "end": "7.8"
     },
     {
         "vocal": "o",
-        "start": 7.94,
-        "end": 8.1
+        "start": "7.9",
+        "end": "7.96"
     },
     {
         "vocal": "i",
-        "start": 8.11,
-        "end": 8.29
+        "start": "8.06",
+        "end": "8.11"
     },
     {
         "vocal": "a",
-        "start": 8.3,
-        "end": 8.52
+        "start": "8.23",
+        "end": "8.3"
     },
     {
         "vocal": "a",
-        "start": 8.45,
-        "end": 8.67
+        "start": "8.37",
+        "end": "8.44"
     },
     {
         "vocal": "a",
-        "start": 8.67,
-        "end": 8.88
+        "start": "8.58",
+        "end": "8.65"
     },
     {
         "vocal": "e",
-        "start": 9.24,
-        "end": 9.39
+        "start": "8.77",
+        "end": "8.82"
     },
     {
         "vocal": "a",
-        "start": 9.39,
-        "end": 9.53
+        "start": "8.91",
+        "end": "8.96"
     },
     {
         "vocal": "i",
-        "start": 9.48,
-        "end": 9.63
+        "start": "9.01",
+        "end": "9.06"
     },
     {
         "vocal": "e",
-        "start": 9.53,
-        "end": 9.68
+        "start": "9.06",
+        "end": "9.11"
     },
     {
         "vocal": "o",
-        "start": 9.68,
-        "end": 9.83
+        "start": "9.2",
+        "end": "9.25"
     },
     {
         "vocal": "a",
-        "start": 9.83,
-        "end": 9.98
+        "start": "9.36",
+        "end": "9.41"
     },
     {
         "vocal": "i",
-        "start": 10.0,
-        "end": 10.19
+        "start": "9.53",
+        "end": "9.59"
     },
     {
         "vocal": "i",
-        "start": 10.13,
-        "end": 10.32
+        "start": "9.65",
+        "end": "9.71"
     },
     {
         "vocal": "i",
-        "start": 10.26,
-        "end": 10.45
+        "start": "9.77",
+        "end": "9.83"
     },
     {
         "vocal": "e",
-        "start": 10.39,
-        "end": 10.59
+        "start": "9.89",
+        "end": "9.95"
     },
     {
         "vocal": "e",
-        "start": 10.56,
-        "end": 10.7
+        "start": "10.05",
+        "end": "10.1"
     },
     {
         "vocal": "o",
-        "start": 10.67,
-        "end": 10.85
+        "start": "10.17",
+        "end": "10.24"
     },
     {
         "vocal": "u",
-        "start": 10.79,
-        "end": 10.98
+        "start": "10.3",
+        "end": "10.37"
     },
     {
         "vocal": "i",
-        "start": 10.92,
-        "end": 11.1
+        "start": "10.44",
+        "end": "10.51"
     },
     {
         "vocal": "a",
-        "start": 11.04,
-        "end": 11.22
+        "start": "10.57",
+        "end": "10.64"
     },
     {
         "vocal": "o",
-        "start": 11.23,
-        "end": 11.44
+        "start": "11.05",
+        "end": "11.12"
     },
     {
         "vocal": "o",
-        "start": 11.37,
-        "end": 11.58
+        "start": "11.18",
+        "end": "11.24"
     },
     {
         "vocal": "u",
-        "start": 11.44,
-        "end": 11.59
+        "start": "11.24",
+        "end": "11.31"
     },
     {
         "vocal": "o",
-        "start": 11.54,
-        "end": 11.72
+        "start": "11.38",
+        "end": "11.45"
     },
     {
         "vocal": "o",
-        "start": 11.66,
-        "end": 11.84
+        "start": "11.51",
+        "end": "11.58"
     },
     {
         "vocal": "e",
-        "start": 11.86,
-        "end": 12.1
+        "start": "11.76",
+        "end": "11.88"
     },
     {
         "vocal": "u",
-        "start": 12.06,
-        "end": 12.19
+        "start": "12.05",
+        "end": "12.09"
     },
     {
         "vocal": "e",
-        "start": 12.11,
-        "end": 12.24
+        "start": "12.09",
+        "end": "12.14"
     },
     {
         "vocal": "u",
-        "start": 12.15,
-        "end": 12.53
+        "start": "12.14",
+        "end": "12.29"
     },
     {
         "vocal": "o",
-        "start": 12.4,
-        "end": 12.78
+        "start": "12.44",
+        "end": "12.59"
     },
     {
         "vocal": "a",
-        "start": 12.53,
-        "end": 12.71
+        "start": "12.59",
+        "end": "12.64"
     },
     {
         "vocal": "u",
-        "start": 12.66,
-        "end": 12.86
+        "start": "12.7",
+        "end": "12.75"
     },
     {
         "vocal": "a",
-        "start": 12.79,
-        "end": 13.0
+        "start": "12.81",
+        "end": "12.86"
     },
     {
         "vocal": "e",
-        "start": 12.99,
-        "end": 13.18
+        "start": "12.98",
+        "end": "13.04"
     },
     {
         "vocal": "a",
-        "start": 13.12,
-        "end": 13.3
+        "start": "13.11",
+        "end": "13.17"
     },
     {
         "vocal": "e",
-        "start": 13.28,
-        "end": 13.38
+        "start": "13.28",
+        "end": "13.32"
     },
     {
         "vocal": "a",
-        "start": 13.31,
-        "end": 13.5
+        "start": "13.32",
+        "end": "13.38"
     },
     {
         "vocal": "u",
-        "start": 13.44,
-        "end": 13.63
+        "start": "13.44",
+        "end": "13.5"
     },
     {
         "vocal": "e",
-        "start": 13.5,
-        "end": 13.7
+        "start": "13.5",
+        "end": "13.57"
     },
     {
         "vocal": "a",
-        "start": 13.7,
-        "end": 13.89
+        "start": "13.69",
+        "end": "13.75"
     },
     {
         "vocal": "o",
-        "start": 14.13,
-        "end": 14.43
+        "start": "14.53",
+        "end": "14.67"
     },
     {
         "vocal": "o",
-        "start": 14.28,
-        "end": 14.42
+        "start": "14.77",
+        "end": "14.87"
     },
     {
         "vocal": "o",
-        "start": 14.37,
-        "end": 14.52
+        "start": "14.96",
+        "end": "15.06"
     },
     {
         "vocal": "u",
-        "start": 14.42,
-        "end": 14.57
+        "start": "15.06",
+        "end": "15.11"
     },
     {
         "vocal": "o",
-        "start": 14.58,
-        "end": 14.75
+        "start": "15.24",
+        "end": "15.31"
     },
     {
         "vocal": "o",
-        "start": 14.69,
-        "end": 14.87
+        "start": "15.39",
+        "end": "15.46"
     },
     {
         "vocal": "u",
-        "start": 14.86,
-        "end": 15.02
+        "start": "15.59",
+        "end": "15.65"
     },
     {
         "vocal": "e",
-        "start": 14.92,
-        "end": 15.08
+        "start": "15.65",
+        "end": "15.7"
     },
     {
         "vocal": "e",
-        "start": 15.04,
-        "end": 15.25
+        "start": "15.78",
+        "end": "15.86"
     },
     {
         "vocal": "a",
-        "start": 15.13,
-        "end": 15.21
+        "start": "15.9",
+        "end": "15.94"
     },
     {
         "vocal": "o",
-        "start": 15.25,
-        "end": 15.52
+        "start": "16.02",
+        "end": "16.1"
     },
     {
         "vocal": "a",
-        "start": 15.43,
-        "end": 15.7
+        "start": "16.18",
+        "end": "16.27"
     },
     {
         "vocal": "o",
-        "start": 15.61,
-        "end": 15.88
+        "start": "16.35",
+        "end": "16.43"
     },
     {
         "vocal": "e",
-        "start": 16.24,
-        "end": 16.35
+        "start": "17.04",
+        "end": "17.1"
     },
     {
         "vocal": "u",
-        "start": 16.35,
-        "end": 16.47
+        "start": "17.21",
+        "end": "17.27"
     },
     {
         "vocal": "e",
-        "start": 16.39,
-        "end": 16.51
+        "start": "17.27",
+        "end": "17.33"
     },
     {
         "vocal": "e",
-        "start": 16.52,
-        "end": 16.67
+        "start": "17.44",
+        "end": "17.49"
     },
     {
         "vocal": "a",
-        "start": 16.77,
-        "end": 16.98
+        "start": "17.69",
+        "end": "17.76"
     },
     {
         "vocal": "a",
-        "start": 16.91,
-        "end": 17.13
+        "start": "17.83",
+        "end": "17.9"
     },
     {
         "vocal": "o",
-        "start": 17.06,
-        "end": 17.28
+        "start": "17.98",
+        "end": "18.05"
     },
     {
         "vocal": "u",
-        "start": 17.41,
-        "end": 17.52
+        "start": "18.44",
+        "end": "18.49"
     },
     {
         "vocal": "a",
-        "start": 17.45,
-        "end": 17.56
+        "start": "18.49",
+        "end": "18.54"
     },
     {
         "vocal": "o",
-        "start": 17.56,
-        "end": 17.68
+        "start": "18.64",
+        "end": "18.69"
     },
     {
         "vocal": "e",
-        "start": 17.68,
-        "end": 17.9
+        "start": "18.77",
+        "end": "18.85"
     },
     {
         "vocal": "e",
-        "start": 17.81,
-        "end": 17.98
+        "start": "18.91",
+        "end": "18.98"
     },
     {
         "vocal": "a",
-        "start": 17.98,
-        "end": 18.16
+        "start": "19.11",
+        "end": "19.17"
     },
     {
         "vocal": "a",
-        "start": 18.1,
-        "end": 18.28
+        "start": "19.24",
+        "end": "19.3"
     },
     {
         "vocal": "o",
-        "start": 18.23,
-        "end": 18.44
+        "start": "19.37",
+        "end": "19.44"
     },
     {
         "vocal": "o",
-        "start": 18.46,
-        "end": 18.71
+        "start": "19.61",
+        "end": "19.72"
     },
     {
         "vocal": "o",
-        "start": 18.62,
-        "end": 18.88
+        "start": "19.82",
+        "end": "19.92"
     },
     {
         "vocal": "e",
-        "start": 18.91,
-        "end": 19.05
+        "start": "20.05",
+        "end": "20.1"
     },
     {
         "vocal": "e",
-        "start": 18.96,
-        "end": 19.15
+        "start": "20.1",
+        "end": "20.16"
     },
     {
         "vocal": "i",
-        "start": 19.22,
-        "end": 19.41
+        "start": "20.32",
+        "end": "20.38"
     },
     {
         "vocal": "a",
-        "start": 19.35,
-        "end": 19.54
+        "start": "20.43",
+        "end": "20.49"
     },
     {
         "vocal": "a",
-        "start": 19.48,
-        "end": 19.67
+        "start": "20.54",
+        "end": "20.6"
     },
     {
         "vocal": "u",
-        "start": 19.61,
-        "end": 19.82
+        "start": "20.67",
+        "end": "20.73"
     },
     {
         "vocal": "e",
-        "start": 19.82,
-        "end": 20.02
+        "start": "20.87",
+        "end": "20.95"
     },
     {
         "vocal": "a",
-        "start": 20.02,
-        "end": 20.22
+        "start": "21.1",
+        "end": "21.17"
     },
     {
         "vocal": "i",
-        "start": 20.15,
-        "end": 20.35
+        "start": "21.25",
+        "end": "21.32"
     },
     {
         "vocal": "e",
-        "start": 20.22,
-        "end": 20.42
+        "start": "21.32",
+        "end": "21.39"
     },
     {
         "vocal": "o",
-        "start": 20.42,
-        "end": 20.62
+        "start": "21.54",
+        "end": "21.62"
     },
     {
         "vocal": "o",
-        "start": 21.07,
-        "end": 21.29
+        "start": "22.58",
+        "end": "22.66"
     },
     {
         "vocal": "o",
-        "start": 21.22,
-        "end": 21.43
+        "start": "22.75",
+        "end": "22.84"
     },
     {
         "vocal": "e",
-        "start": 21.29,
-        "end": 21.45
+        "start": "22.84",
+        "end": "22.91"
     },
     {
         "vocal": "a",
-        "start": 21.45,
-        "end": 21.61
+        "start": "23.04",
+        "end": "23.11"
     },
     {
         "vocal": "e",
-        "start": 21.55,
-        "end": 21.7
+        "start": "23.14",
+        "end": "23.18"
     },
     {
         "vocal": "e",
-        "start": 21.6,
-        "end": 21.78
+        "start": "23.18",
+        "end": "23.24"
     },
     {
         "vocal": "u",
-        "start": 21.78,
-        "end": 21.97
+        "start": "23.36",
+        "end": "23.42"
     },
     {
         "vocal": "a",
-        "start": 21.97,
-        "end": 22.15
+        "start": "23.54",
+        "end": "23.6"
     },
     {
         "vocal": "a",
-        "start": 22.09,
-        "end": 22.27
+        "start": "23.66",
+        "end": "23.72"
     },
     {
         "vocal": "a",
-        "start": 22.15,
-        "end": 22.27
+        "start": "23.72",
+        "end": "23.77"
     },
     {
         "vocal": "u",
-        "start": 22.27,
-        "end": 22.49
+        "start": "23.84",
+        "end": "23.92"
     },
     {
         "vocal": "o",
-        "start": 22.43,
-        "end": 22.68
+        "start": "24.02",
+        "end": "24.12"
     },
     {
         "vocal": "o",
-        "start": 22.59,
-        "end": 22.85
+        "start": "24.22",
+        "end": "24.32"
     },
     {
         "vocal": "a",
-        "start": 23.2,
-        "end": 23.37
+        "start": "24.45",
+        "end": "24.51"
     },
     {
         "vocal": "e",
-        "start": 23.38,
-        "end": 23.61
+        "start": "24.64",
+        "end": "24.71"
     },
     {
         "vocal": "u",
-        "start": 23.54,
-        "end": 23.76
+        "start": "24.79",
+        "end": "24.86"
     },
     {
         "vocal": "i",
-        "start": 23.68,
-        "end": 23.91
+        "start": "24.93",
+        "end": "25.0"
     },
     {
         "vocal": "a",
-        "start": 23.76,
-        "end": 23.98
+        "start": "25.0",
+        "end": "25.08"
     },
     {
         "vocal": "u",
-        "start": 24.26,
-        "end": 24.56
+        "start": "25.32",
+        "end": "25.43"
     },
     {
         "vocal": "e",
-        "start": 24.41,
-        "end": 24.56
+        "start": "25.48",
+        "end": "25.53"
     },
     {
         "vocal": "u",
-        "start": 24.56,
-        "end": 24.71
+        "start": "25.62",
+        "end": "25.67"
     },
     {
         "vocal": "a",
-        "start": 24.61,
-        "end": 24.76
+        "start": "25.67",
+        "end": "25.72"
     },
     {
         "vocal": "e",
-        "start": 24.73,
-        "end": 24.94
+        "start": "25.77",
+        "end": "25.83"
     },
     {
         "vocal": "o",
-        "start": 24.87,
-        "end": 25.07
+        "start": "25.91",
+        "end": "26.0"
     },
     {
         "vocal": "a",
-        "start": 25.07,
-        "end": 25.28
+        "start": "26.17",
+        "end": "26.25"
     },
     {
         "vocal": "a",
-        "start": 25.21,
-        "end": 25.42
+        "start": "26.34",
+        "end": "26.42"
     },
     {
         "vocal": "a",
-        "start": 25.42,
-        "end": 25.56
+        "start": "26.71",
+        "end": "26.76"
     },
     {
         "vocal": "a",
-        "start": 25.56,
-        "end": 25.69
+        "start": "26.85",
+        "end": "26.9"
     },
     {
         "vocal": "a",
-        "start": 25.65,
-        "end": 25.78
+        "start": "26.95",
+        "end": "27.0"
     },
     {
         "vocal": "a",
-        "start": 25.75,
-        "end": 25.94
+        "start": "27.05",
+        "end": "27.09"
     },
     {
         "vocal": "a",
-        "start": 25.94,
-        "end": 26.12
+        "start": "27.2",
+        "end": "27.27"
     },
     {
         "vocal": "a",
-        "start": 26.06,
-        "end": 26.25
+        "start": "27.33",
+        "end": "27.39"
     },
     {
         "vocal": "a",
-        "start": 26.25,
-        "end": 26.43
+        "start": "27.52",
+        "end": "27.59"
     },
     {
         "vocal": "a",
-        "start": 26.37,
-        "end": 26.59
+        "start": "27.65",
+        "end": "27.7"
     },
     {
         "vocal": "e",
-        "start": 26.52,
-        "end": 26.74
+        "start": "27.75",
+        "end": "27.79"
     },
     {
         "vocal": "u",
-        "start": 26.66,
-        "end": 26.88
+        "start": "27.84",
+        "end": "27.89"
     },
     {
         "vocal": "a",
-        "start": 26.74,
-        "end": 26.96
+        "start": "27.89",
+        "end": "27.94"
     },
     {
         "vocal": "a",
-        "start": 26.88,
-        "end": 27.1
+        "start": "27.98",
+        "end": "28.03"
     }
 ]
