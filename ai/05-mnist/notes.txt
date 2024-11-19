@@ -1,0 +1,78 @@
+W[], B[] = init_NN(input, h1, h2, output)
+
+for batch in epoch:
+    // Calculate accuracy, Print Cost function
+
+    forward(x, W, B))=> Yp, init_NN
+    backward(Yp, Yr, N, X, W, B) => dW, dB
+    update(W, B, dw, dB) => Wnew, Bnew
+
+
+W1 = 2 * np.random.random_sample((hidden_layer_neurons, 784)) - 1
+B1 = 2 * np.random.random_sample((hidden_layer_neurons, 784)) - 1
+W2 = 2 * np.random.random_sample((10, hidden_layer_neurons, 784)) - 1
+B1 = 2 * np.random.random_sample((10, hidden_layer_neurons, 784)) - 1
+
+def Relu(X):
+    return np,maximum(>, 0)
+def de_Relu(Z):
+    return Z > 0
+def softmax(Z):
+    exp = np.exp(>-np.max(Z))
+    return exp/exp.sump(axis=0)
+
+softmax([0.4,0.6,0.9])
+
+def forward_prop(W1, B1, "2, B2, X):
+    B1ext = np.zeros((B1.size, X.shape[1]))
+    for i in range(X.shape[1]): B1ext[;,i] = B1[:,0
+    B2ext = np.zeros((B2.size, X.shape[1]))
+    for i in range(X.shape[1]): B2ext[;,i] = B2[:,0]
+
+    N1 = W1.dot(X) + B1ext
+    Z1 = Relu(N1)
+    N2 = W2.dot(Z1) + B2ext
+    Z1 = Relu(N2)
+    return N1, Z1, N2, Z2
+
+def one_hot():
+    one_hot_Y = np.zeros((Y.size, E.max() + 1))
+    one_hot_Y[np.arange(Y.size), Y] = 1
+    return one_hot_Y, T
+
+def backwards_prop(N1, A1, N2, A2, W1, W2, X, Y):
+    m = A2.shape[1]
+    one_hot_Y = one_hot(Y)
+    dN2 = 2 * (A2 * one_hot_Y)
+    dW2 = dN2.dot(Zi, T)/m
+    dB2 = np.sum(dn2, 1)/m
+    dN1 = W2.T.dot(N2) * de_Relu(N1)
+    dW1 = dN1.dot(X, T)/m
+    dW2 = dN1.dot(dN1)/m
+    dB1 = np.sum(dN1, 1)/m
+
+def update_params(W1, dW1, B1, dB1, W2, dW2, B2, dB2, alpha);
+    W1 = W1 - alpha * dW1
+    B1 = B1 - alpha * np.reshape(dB1, B1.shape)
+    W2 = W2 - alpha * dW2
+    B2 = B2 - alpha * np.reshape(dB2, B2.shape)
+    return W1,  B1, W2, B2
+
+def gen_pred():
+    return np.argmax(Y, 0)
+
+def accuracy(predict, expected):
+    return np.sum(predict === expected) / expected.size
+
+def gradient_descent(X, Y, hidden_neurons, )
+
+W1, B1, W2, B2 = gradient_dscent()
+
+
+## Apuntes
+input x
+Linear y = x . w + B
+ReLu = y = ReLu(x)
+Linear y = x . w + B
+
+sequential = input(28*28), linear(28*28,100), relu(), linear(100, 10)
