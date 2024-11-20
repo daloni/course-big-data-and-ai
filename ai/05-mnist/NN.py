@@ -7,7 +7,7 @@ class Layer(abc):
     @abstractmethod
     def __init__(self, ninputs, noutputs):
         pass
-        
+
     @abstractmethod
     def forward(self, input: np.ndarray) -> np.ndarray:
         pass
@@ -19,20 +19,20 @@ class Layer(abc):
     @abstractmethod
     def update_parameters(self, learning_rate):
         pass
-    
+
 class Input(Layer):
     def __init__(self, ninputs, noutputs):
         pass
 
     def forward(self, input: np.ndarray) -> np.ndarray:
         return input
-    
+
     def backward(self, error):
         return error
-    
+
     def update_parameters(self, learning_rate):
         pass
-    
+
 class Activation(Layer):
     def __init__(self, act_function):
         self.act_function = act_function
@@ -42,8 +42,8 @@ class Activation(Layer):
 
 class Dense(Layer):
     def __init__(self, ninputs, noutputs):
-        self.W = np.random.normal(0, ninputs ** -0.5, [ninputs, noutputs])
-        self.B = np.random.normal(0, ninputs ** -0.5, [1, noutputs])
+        self.W = np.random.randn(ninputs, noutputs) * 0.01
+        self.B = np.zeros((1, noutputs))
 
     def forward(self, x: np.ndarray) -> np.ndarray:
         self.Z = x
@@ -58,7 +58,6 @@ class Dense(Layer):
     def update_parameters(self, learning_rate):
         self.W = self.W - learning_rate / self.bs * self.dW
         self.B = self.B - learning_rate / self.bs * self.dB
-
 
 class ReLu(Activation):
     def __init__(self):
@@ -82,7 +81,6 @@ class ReLu(Activation):
     def update_parameters(self, learning_rate):
         pass 
 
-
 class Model():
     def __init__(self, layers: list):
         self.layers = layers
@@ -91,17 +89,16 @@ class Model():
         for layer in self.layers:
             input = layer.forward(input)
         return input
-    
-    
+
     def backward(self, y_hat, y) -> np.ndarray:
         error = self.cost(y_hat, y)
         for layer in reversed(self.layers):
             error = layer.backward(error)
         return error
-    
+
     def cost(self, y_hat, y):
         return (self.one_hot(y)-y_hat)*2
-    
+
     def update_parameters(self, learning_rate=0.03):
         for layer in self.layers:
             layer.update_parameters(learning_rate)
@@ -110,6 +107,6 @@ class Model():
         file = open("model", "w")
         file.write(str(self.layers))
 
-    def one_hot(self,labels):
+    def one_hot(self, labels):
         y = np.eye(10)[labels]
         return y
