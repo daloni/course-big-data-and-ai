@@ -12,7 +12,6 @@ class NeuralNetwork:
 
     def compute_loss(self, y_true, y_pred):
         m = y_true.shape[0]
-        print(y_true * np.log(y_pred + 1e8))
         loss = -np.sum(y_true * np.log(y_pred + 1e-8)) / m
         return loss
     
@@ -35,9 +34,11 @@ class NeuralNetwork:
                 X_batch = X_shuffled[i:i + batch_size]
                 y_batch = y_shuffled[i:i + batch_size]
 
-                num_classes = np.max(y) + 1
-                y_batch_one_hot = self.one_hot_encode(y_batch, num_classes)
+                y_batch_one_hot = self.one_hot_encode(y_batch, 28*28)
                 y_pred = self.forward_propagation(X_batch)
+
+                print("y_true shape:", y_batch_one_hot.shape)
+                print("y_pred shape:", y_pred.shape)
 
                 loss = self.compute_loss(y_batch_one_hot, y_pred)
                 self.backward_propagation(y_batch_one_hot, y_pred)

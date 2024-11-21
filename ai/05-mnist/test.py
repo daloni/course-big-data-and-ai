@@ -12,7 +12,7 @@ class MnistDataloader(object):
         self.training_labels_filepath = training_labels_filepath
         self.test_images_filepath = test_images_filepath
         self.test_labels_filepath = test_labels_filepath
-    
+
     def read_images_labels(self, images_filepath, labels_filepath):        
         labels = []
         with open(labels_filepath, 'rb') as file:
@@ -103,7 +103,7 @@ mnist_dataloader = MnistDataloader(training_images_filepath, training_labels_fil
 
 # Definir la arquitectura de la red
 layers = [
-    NN.Input(28, 10),
+    NN.Input(28, 28),
     NN.Dense(28, 1000),
     NN.ReLu(),
     NN.Dense(1000, 100),
@@ -111,9 +111,8 @@ layers = [
 
 # Crear la red neuronal
 nn = NeuralNetwork.NeuralNetwork(layers=layers, learning_rate=0.1)
-
 # Entrenar la red neuronal en MNIST
-nn.fit(x_train, y_train, epochs=10, batch_size=64)
+nn.fit(x_train, y_train, epochs=100, batch_size=28*28)
 
 # Evaluar la red neuronal
 y_pred = nn.predict(x_test)
