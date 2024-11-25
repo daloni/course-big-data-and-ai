@@ -1,4 +1,5 @@
 import numpy as np
+import pickle
 
 class NeuralNetwork:
     def __init__(self, layers, learning_rate=0.01):
@@ -24,7 +25,7 @@ class NeuralNetwork:
         for layer in self.layers:
             layer.update_parameters(self.learning_rate)
 
-    def fit(self, X, y, epochs=100, batch_size=32):
+    def fit(self, X, y, epochs=1000, batch_size=64, num_classes=10):
         for epoch in range(epochs):
             permutation = np.random.permutation(X.shape[0])
             X_shuffled = X[permutation]
@@ -34,11 +35,8 @@ class NeuralNetwork:
                 X_batch = X_shuffled[i:i + batch_size]
                 y_batch = y_shuffled[i:i + batch_size]
 
-                y_batch_one_hot = self.one_hot_encode(y_batch, 28*28)
+                y_batch_one_hot = np.eye(num_classes, dtype=np.float32)[y_batch]
                 y_pred = self.forward_propagation(X_batch)
-
-                print("y_true shape:", y_batch_one_hot.shape)
-                print("y_pred shape:", y_pred.shape)
 
                 loss = self.compute_loss(y_batch_one_hot, y_pred)
                 self.backward_propagation(y_batch_one_hot, y_pred)
@@ -50,7 +48,10 @@ class NeuralNetwork:
         y_pred = self.forward_propagation(X)
         return np.argmax(y_pred, axis=1)
 
-    def one_hot_encode(self, y, labels):
-        one_hot = np.zeros((y.shape[0], labels))
-        one_hot[np.arange(y.shape[0]), y] = 1
-        return one_hot
+    def save_model(self, file_path):
+        with open(file_path, 'wb') as f:
+            pickle.dump(self.layers, f)
+
+    def load_model(self, file_path):
+        with open(file_path, 'rb') as f:
+            self.layers = pickle.load(f)

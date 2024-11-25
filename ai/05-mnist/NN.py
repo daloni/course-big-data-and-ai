@@ -40,15 +40,38 @@ class Activation(Layer):
     def forward(self, input: np.ndarray) -> np.ndarray:
         return self.act_function(input)
 
+class Flatten:
+    def forward(self, X):
+        self.input_shape = X.shape
+        return X.reshape(X.shape[0], -1)
+
+    def backward(self, dA):
+        return dA.reshape(self.input_shape)
+
+    def update_parameters(self, learning_rate):
+        pass
+
 class Dense(Layer):
-    def __init__(self, ninputs, noutputs):
-        self.W = np.random.randn(ninputs, noutputs) * 0.01
+    def __init__(self, ninputs, noutputs, activation=None, initialization=1):
+        if initialization != 1 and initialization != 2:
+            initialization = 1
+
+        self.activation = activation
+        self.W = np.random.randn(ninputs, noutputs) * np.sqrt(initialization / ninputs)
         self.B = np.zeros((1, noutputs))
 
     def forward(self, x: np.ndarray) -> np.ndarray:
         self.Z = x
         self.bs = x.shape[0]
-        return x @ self.W + self.B
+        output = x @ self.W + self.B
+
+        if self.activation == "softmax":
+            exp_values = np.exp(output - np.max(output, axis=1, keepdims=True))
+            return exp_values / np.sum(exp_values, axis=1, keepdims=True)
+        elif self.activation == "relu":
+            return np.maximum(0, output)
+
+        return output
 
     def backward(self, error) -> np.ndarray:
         self.dW = self.Z.T @ error
@@ -59,54 +82,23 @@ class Dense(Layer):
         self.W = self.W - learning_rate / self.bs * self.dW
         self.B = self.B - learning_rate / self.bs * self.dB
 
-class ReLu(Activation):
-    def __init__(self):
+class LeakyReLu(Activation):
+    def __init__(self, alpha=0.01):
         self.act_function = self.activate
+        self.alpha = alpha
 
     def forward(self, input: np.ndarray) -> np.ndarray:
-        self.Z = self.activate(input)
-        return self.Z
+        self.Z = input
+        return self.activate(input)
 
     def backward(self, error) -> np.ndarray:
-        return error*self.activate(self.Z, derivative=True)   
+        return error * self.activate(self.Z, derivative=True)   
 
-    def activate(self, input: np.ndarray, derivative = False) -> np.ndarray:
+    def activate(self, input: np.ndarray, derivative=False) -> np.ndarray:
         if derivative:
-            y = np.ones(input.shape)
-            y[input<=0] = 0
-            return y
+            return np.where(self.Z > 0, 1, self.alpha)
         else:
-            return np.maximum(0, input)
+            return np.where(input > 0, input, self.alpha * input)
 
     def update_parameters(self, learning_rate):
         pass 
-
-class Model():
-    def __init__(self, layers: list):
-        self.layers = layers
-
-    def forward(self, input: np.ndarray) -> np.ndarray:
-        for layer in self.layers:
-            input = layer.forward(input)
-        return input
-
-    def backward(self, y_hat, y) -> np.ndarray:
-        error = self.cost(y_hat, y)
-        for layer in reversed(self.layers):
-            error = layer.backward(error)
-        return error
-
-    def cost(self, y_hat, y):
-        return (self.one_hot(y)-y_hat)*2
-
-    def update_parameters(self, learning_rate=0.03):
-        for layer in self.layers:
-            layer.update_parameters(learning_rate)
-
-    def save_model(self):
-        file = open("model", "w")
-        file.write(str(self.layers))
-
-    def one_hot(self, labels):
-        y = np.eye(10)[labels]
-        return y

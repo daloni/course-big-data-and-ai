@@ -2,6 +2,7 @@ import NN
 import NeuralNetwork
 import numpy as np
 import struct
+import random
 from sklearn.metrics import accuracy_score
 from array import array
 
@@ -50,6 +51,7 @@ mnist_dataloader = MnistDataloader(training_images_filepath, training_labels_fil
 x_train = x_train.astype(np.float32) / 255.0
 x_test = x_test.astype(np.float32) / 255.0
 
+# Neuronal Network
 layers = [
     NN.Input(28, 28),
     NN.Flatten(),
@@ -60,12 +62,14 @@ layers = [
     NN.Dense(100, 10, activation="softmax"),
 ]
 
-# Create Neuronal Network
+# Crear la red neuronal
 nn = NeuralNetwork.NeuralNetwork(layers=layers, learning_rate=0.001)
-nn.fit(x_train, y_train, epochs=100, batch_size=128)
 
-y_pred = nn.predict(x_test)
-accuracy = accuracy_score(y_test, y_pred)
-print(f"Precision in test: {accuracy:.4f}")
+nn.load_model("model.pickle")
+exampleItemNumber = random.randint(0, len(x_train))
+print("Number ", y_train[exampleItemNumber], " with index ", exampleItemNumber)
 
-nn.save_model("model.pickle")
+image = x_train[exampleItemNumber].reshape(1, -1)
+prediction = nn.predict(image)
+
+print("Predict ", prediction)
