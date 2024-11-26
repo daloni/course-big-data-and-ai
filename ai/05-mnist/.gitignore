@@ -1,3 +1,3 @@
-model.pickle
+model*.pickle
 datasets/t10k-images.idx3-ubyte
 datasets/train-images.idx3-ubyte

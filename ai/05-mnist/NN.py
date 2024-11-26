@@ -43,7 +43,7 @@ class Activation(Layer):
 class Flatten:
     def forward(self, X):
         self.input_shape = X.shape
-        return X.reshape(X.shape[0], -1)
+        return X.reshape(X.shape[0], X.shape[1] * X.shape[2])
 
     def backward(self, dA):
         return dA.reshape(self.input_shape)
