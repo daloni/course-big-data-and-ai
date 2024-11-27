@@ -40,10 +40,13 @@ class Activation(Layer):
     def forward(self, input: np.ndarray) -> np.ndarray:
         return self.act_function(input)
 
-class Flatten:
+class Flatten(Layer):
+    def __init__(self, num_classes):
+        self.num_classes = num_classes
+
     def forward(self, X):
         self.input_shape = X.shape
-        return X.reshape(X.shape[0], X.shape[1] * X.shape[2])
+        return X.reshape(X.shape[0], self.num_classes)
 
     def backward(self, dA):
         return dA.reshape(self.input_shape)

@@ -23,7 +23,7 @@ x_test = np.where(x_test > 1, 1, 0)
 
 layers = [
     NN.Input(28, 28),
-    NN.Flatten(),
+    NN.Flatten(28*28),
     NN.Dense(28*28, 1000),
     NN.LeakyReLu(),
     NN.Dense(1000, 50),
@@ -36,7 +36,7 @@ layers = [
 ]
 
 # Create Neuronal Network
-nn = NeuralNetwork.NeuralNetwork(layers=layers, learning_rate=0.01)
+nn = NeuralNetwork.NeuralNetwork(layers=layers, learning_rate=0.01, lambda_reg=0.02)
 nn.fit(x_train, y_train, epochs=100, batch_size=500)
 
 y_pred = nn.predict(x_test)
@@ -44,3 +44,4 @@ accuracy = accuracy_score(y_test, y_pred)
 print(f"Precision in test: {accuracy:.4f}")
 
 nn.save_model("model.pickle")
+nn.show_losses()
