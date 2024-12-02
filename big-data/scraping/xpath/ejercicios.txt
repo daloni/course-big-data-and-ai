@@ -1,0 +1,51 @@
+Ejercicio 1. Comprueba el resultado de las siguientes consultas:
+a. /departamentos => devuelve todos los datos de departamentos (Esta sería la misma consulta del ejercicio anterior pero sin indicar toda la ruta)
+b. /departamentos/DEP_ROW => devuelve las etiquetas de cada DEP_ROW
+c. /departamentos/DEP_ROW/DNOMBRE => devuelve nombres de departamentos entre etiquetas
+d. /departamentos/DEP_ROW/DNOMBRE/text() → Lo mismo que antes pero sin etiquetas
+e. //LOC/text() → localidades NOTA: / se usa para dar rutas absolutas. Si el descriptor comienza con // se supone que la ruta descrita puede comenzar en cualquier parte
+
+Ejercicio 2. Averigua el resultado de las siguientes consultas (utilizaremos el documento ‘db/dam2/empleados.xml’)
+a. /EMPLEADOS/EMP_ROW[DEPT_NO=10]
+b. /EMPLEADOS/EMP_ROW/APELLIDO
+c. /EMPLEADOS/EMP_ROW/DEPT_NO
+d. /EMPLEADOS/EMP_ROW [DEPT_NO=10]/APELLIDO/text()
+e. /EMPLEADOS/EMP_ROW [not(OFICIO=’ANALISTA’)]
+f. /EMPLEADOS/EMP_ROW[SALARIO>1300 and DEPT_NO=20]/APELLIDO
+g. /EMPLEADOS/EMP_ROW[1]
+
+Ejercicio 3. Investiga en la web las siguientes funciones de XPath y pon algún ejemplo utilizando los documentos departamentos.xml y empleados.xml
+a. last()
+b. position()
+c. count()
+d. sum(),div(),mod()
+e. max(), min(),avg()
+f. concat(cadena1, cadena2,...)
+g. starts-with (cadena1, cadena2)
+h. contains(cad1,cad2)
+i. string-length(argumento)
+
+Ejercicio 4. Resuelve las siguientes consultas:
+a. Devuelve el apellido del penúltimo empleado (NOTA: utilizar last())
+b. Obtén los elementos del empleado que ocupa la posición 3 (position())
+c. Cuenta el número de empleados del departamento 10
+d. Obtén la suma de SALARIO de los empleados del DEPT_NO =20
+e. Obtén el salario máximo, el mínimo de los empleados con OFICIO=ANALISTA
+f. Obtén la media de salario en el DEPT_NO=10
+g. Devuelve la concatenación de apellido, oficio y salario
+h. Obtén los elementos de los empleados cuyo apellido empieza por ‘A’
+i. Devuelve los oficios que contienen la sílaba ‘OR’
+j. Obtén los datos de los empleados cuyo apellido tiene menos de 4 caracteres
+
+
+Ejercicio 5. Resuelve las siguientes consultas referentes al documento
+productos.xml. Este documento contiene los datos de los productos de una
+distribuidora de componentes informáticos.
+a) Obtén la denominación y precio de todos los productos
+b) Obtén los productos que sean “Placa base”
+c) Obtén los productos cuyo precio sea mayor que 60€ y de la zona 20
+d) Obtén el número de los productos que sean memorias y de la zona 10
+e) Obtén la media de los precios de los micros
+f) Obtén los datos de los productos cuyo stock mínimo sea mayor que el stock actual (usa función number())
+g) Obtén el producto más caro
+h) Obtén el producto más barato de la zona 20

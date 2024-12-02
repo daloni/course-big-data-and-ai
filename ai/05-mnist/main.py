@@ -1,4 +1,4 @@
-import NN
+import Layers
 import NeuralNetwork
 import numpy as np
 import Dataloader
@@ -24,17 +24,17 @@ x_test = np.where(x_test > 1, 1, 0)
 
 # Neuronal Network
 layers = [
-    NN.Input(28, 28),
-    NN.Flatten(28*28),
-    NN.Dense(28*28, 1000),
-    NN.LeakyReLu(),
-    NN.Dense(1000, 50),
-    NN.LeakyReLu(),
-    NN.Dense(50, 200),
-    NN.LeakyReLu(),
-    NN.Dense(200, 30),
-    NN.LeakyReLu(),
-    NN.Dense(30, 10, activation="softmax"),
+    Layers.Input(28, 28),
+    Layers.Flatten(28*28),
+    Layers.Dense(28*28, 1000),
+    Layers.LeakyReLu(),
+    Layers.Dense(1000, 50),
+    Layers.LeakyReLu(),
+    Layers.Dense(50, 200),
+    Layers.LeakyReLu(),
+    Layers.Dense(200, 30),
+    Layers.LeakyReLu(),
+    Layers.Dense(30, 10, activation="softmax"),
 ]
 
 # Crear la red neuronal
