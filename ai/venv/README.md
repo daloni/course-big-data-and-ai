@@ -11,11 +11,15 @@ pip3 install virtualenv
 ```
 virtualenv venv
 ```
+or
+```
+python3 -m venv ./.venv
+```
 
 ## Execute environment
 
 ```
-source ./venv/bin/activate
+source ./.venv/bin/activate
 ```
 
 Then, install your dependencies inside the virtual environment
