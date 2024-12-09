@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicción de Ataque al Corazón</title>
+</head>
+<body>
+    <h1>Ingrese los datos del paciente</h1>
+    <form action="http://127.0.0.1:5000/predict" method="post">
+        <input type="number" name="age" placeholder="Age" />
+        <input type="number" name="trestbps" placeholder="Resting Blood Pressure" />
+        <input type="number" name="chol" placeholder="Cholesterol" />
+        <input type="number" name="fbs" placeholder="Fasting Blood Sugar" />
+        <input type="number" name="thalach" placeholder="Max Heart Rate" />
+        <input type="number" name="exang" placeholder="Exercise Induced Angina" />
+        <input type="number" name="oldpeak" placeholder="ST Depression" />
+        <input type="number" name="ca" placeholder="Number of Major Vessels" />
+        <select name="sex">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <select name="cp_type">
+            <option value="0">Type 0</option>
+            <option value="1">Type 1</option>
+            <option value="2">Type 2</option>
+            <option value="3">Type 3</option>
+        </select>
+        <!-- Añade otros campos según sea necesario -->
+        <button type="submit">Predict</button>
+    </form>        
+</body>
+</html>
