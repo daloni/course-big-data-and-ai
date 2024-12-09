@@ -72,7 +72,6 @@ def predict():
         input_data['exang'] = float(form_data.get('exang', 0))
         input_data['oldpeak'] = float(form_data.get('oldpeak', 0))
         input_data['ca'] = float(form_data.get('ca', 0))
-        input_data['target'] = float(form_data.get('target', 0))
 
         sex = form_data.get('sex', 'male')
         input_data[f'sex_{sex}'] = 1
@@ -94,16 +93,11 @@ def predict():
         input_features = input_tensor.to(device)
 
         predicted_classes, probabilities = model.predict(input_features)
-        result = {
-            'predicted_class': int(predicted_classes.item()),
-            'probabilities': probabilities.tolist()
-        }
-        return jsonify(result)
+        result = 'Probable' if probabilities.argmax(1).item() else 'Improbable'
 
-        prediction = model.predict([input_features])
-        result = 'Probable' if prediction[0] == 1 else 'Improbable'
-
-        return jsonify({'prediction': result})
+        return jsonify({
+            'prediction': result,
+        })
     except Exception as e:
         print(f"Error: {e}")
         return jsonify({'error': str(e)}), 500
