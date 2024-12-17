@@ -3,7 +3,8 @@ import random
 from torchvision import transforms
 from PIL import Image
 import torch
-from NeuronalNetwork import NeuronalNetwork
+# from NeuronalNetwork import NeuronalNetwork
+from NeuronalNetworkResnet import NeuronalNetwork
 
 # Carpetas con las imágenes
 benign_dir = "./data/melanoma_cancer_dataset/test/benign"
@@ -30,7 +31,7 @@ malignant_images = load_random_images(malignant_dir, 5)
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = NeuronalNetwork().to(device)
-model.load_state_dict(torch.load("melanoma_cnn.pth"))
+model.load_state_dict(torch.load("melanoma_cnn.pth", weights_only=False))
 model.eval()
 
 print("Benign")
