@@ -35,7 +35,7 @@ def main(video_file_path):
     cv2.destroyAllWindows()
 
 def download_video_assets():
-    filename = download_assets(VideoAssets.VEHICLES_2)
+    filename = download_assets(VideoAssets.VEHICLES)
     print(f"Downloaded video assets to {filename}")
     # Move to data folder
     shutil.move(filename, "data")
