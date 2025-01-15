@@ -7,7 +7,7 @@ import numpy as np
 from supervision.assets import download_assets, VideoAssets
 from ultralytics import YOLO
 
-model = YOLO("yolov8n.pt")
+model = YOLO("yolo11n.pt")
 
 tracker = sv.ByteTrack(minimum_consecutive_frames=3)
 tracker.reset()
