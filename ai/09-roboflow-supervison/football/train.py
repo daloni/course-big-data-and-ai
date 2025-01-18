@@ -10,7 +10,7 @@ PROJECT_NAME = os.environ.get("PROJECT_NAME", "football-players-detection-3zvbc"
 PROJECT_VERSION = os.environ.get("PROJECT_VERSION", 12)
 
 def main():
-    HOME = os.environ.get("HOME_PATH", "/root")
+    HOME = os.environ.get("ULTRALYTICS_HOME_PATH", "/root")
 
     print(f"Ultralytics settings folder: {HOME}")
     if not os.path.exists(f"{HOME}/datasets"):
