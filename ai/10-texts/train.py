@@ -1,12 +1,11 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import DataLoader
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
-from torch.nn.utils.rnn import pad_sequence
 from transformers import AutoTokenizer
 import re
 
