@@ -2,25 +2,36 @@ from sibling_decoder import SiblingDecoder
 from sibling_encoder import SiblingEncoder
 
 example_text = """
-test test examples
-test test examples
+test2 test examples
+test2 test examples
 """
 
 
-def get_final_dictionary(diccionario):
+def get_final_dictionary(dictionary):
     result = {}
+    reversed_dictionary = {}
 
-    def obtener_valor(key):
-        if isinstance(key, tuple):
+    for k, v in dictionary.items():
+        if isinstance(k, tuple):
+            reversed_dictionary.update({v: k})
+            continue
+
+        reversed_dictionary.update({k: v})
+
+    def get_value(key):
+        new_key = reversed_dictionary.get(key, '')
+
+        if isinstance(new_key, tuple):
             try:
-                return ''.join([obtener_valor(k) for k in key])
+                return ''.join([get_value(k) for k in new_key])
             except KeyError:
                 return "KeyError"
-        return diccionario.get(key, '')
 
-    for key, value in diccionario.items():
-        if isinstance(key, tuple):
-            result[key] = obtener_valor(key)
+        return new_key
+
+    for key, value in reversed_dictionary.items():
+        if isinstance(value, tuple):
+            result[key] = get_value(key)
         else:
             result[key] = value
 
@@ -32,7 +43,6 @@ if __name__ == "__main__":
     # print(encoded_text)
 
     dictionary = encoder.get_dictionary()
-    print(dictionary)
     print(get_final_dictionary(dictionary))
 
     decoder = SiblingDecoder(encoder.get_dictionary())
