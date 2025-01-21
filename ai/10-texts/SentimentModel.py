@@ -6,9 +6,10 @@ class SentimentModel(nn.Module):
         self.embedding = nn.Embedding(vocab_size, embed_size)
         self.lstm = nn.LSTM(embed_size, hidden_size, batch_first=True)
         self.fc = nn.Linear(hidden_size, num_classes)
-    
+
     def forward(self, input_ids, attention_mask):
         embedded = self.embedding(input_ids)
-        _, (hidden, _) = self.lstm(embedded)
+        masked_embedded = embedded * attention_mask.unsqueeze(-1)
+        _, (hidden, _) = self.lstm(masked_embedded)
         out = self.fc(hidden[-1])
         return out
