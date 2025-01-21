@@ -2,10 +2,10 @@ import torch
 from torch.utils.data import Dataset
 
 class ReviewDataset(Dataset):
-    def __init__(self, reviews, labels, vocab, max_len=100):
+    def __init__(self, reviews, labels, tokenizer, max_len=128):
         self.reviews = reviews
         self.labels = labels
-        self.vocab = vocab
+        self.tokenizer = tokenizer
         self.max_len = max_len
     
     def __len__(self):
@@ -15,8 +15,16 @@ class ReviewDataset(Dataset):
         review = self.reviews[idx]
         label = self.labels[idx]
 
-        review_indices = [self.vocab.get(word, self.vocab['<UNK>']) for word in review.split()]
-        review_indices = review_indices[:self.max_len]
-        review_indices = torch.tensor(review_indices, dtype=torch.long)
-
-        return review_indices, label
+        encoding = self.tokenizer(
+            review,
+            truncation=True,
+            padding='max_length',
+            max_length=self.max_len,
+            return_tensors="pt"
+        )
+        
+        return {
+            'input_ids': encoding['input_ids'].squeeze(0),
+            'attention_mask': encoding['attention_mask'].squeeze(0),
+            'label': torch.tensor(label, dtype=torch.long)
+        }
