@@ -1,5 +1,5 @@
 import supervision as sv
-from src.transformers.base import Base
+from src.base import Base
 
 class Model(Base):
     def __init__(self, model):

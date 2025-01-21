@@ -1,6 +1,6 @@
 import supervision as sv
 from tqdm import tqdm
-from src.transformers.base import Base
+from src.base import Base
 
 class VideoCreator:
     def __init__(self, model, source_video_path: str, destination_video_path: str):
