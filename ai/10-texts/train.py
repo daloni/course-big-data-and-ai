@@ -1,42 +1,25 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
+import pandas as pd
+import re
+from torch.optim.lr_scheduler import StepLR
+from sklearn.metrics import classification_report
 from torch.utils.data import DataLoader
 from sklearn.model_selection import train_test_split
-import pandas as pd
-import numpy as np
-from sklearn.preprocessing import LabelEncoder
 from transformers import AutoTokenizer
-import re
+from tqdm import tqdm
 
 from ReviewDataset import ReviewDataset
 from SentimentModel import SentimentModel
-
-df = pd.read_csv('./data/IMDB_Dataset.csv')
+from config import CONFIG
 
 def preprocess_text(text):
-    text = re.sub(r'\W', ' ', str(text))
-    text = re.sub(r'\s+', ' ', text)
     text = text.lower()
+    text = re.sub(r"(\W)(?=\S)", r" \1 ", text)
+    text = re.sub(r"'\s", " ", text)
+    text = re.sub(r'\s+', ' ', text).strip()
     return text
-
-df['review'] = df['review'].apply(preprocess_text)
-
-label_encoder = LabelEncoder()
-df['sentiment'] = label_encoder.fit_transform(df['sentiment'])
-
-# Tokenizador y vocabulario
-tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
-
-# Construir vocabulario
-def yield_tokens(data_iter):
-    for text in data_iter:
-        yield tokenizer(text)
-
-X_train, X_test, y_train, y_test = train_test_split(df['review'], df['sentiment'], test_size=0.2, random_state=42)
-
-train_dataset = ReviewDataset(X_train.values, y_train.values, tokenizer)
-test_dataset = ReviewDataset(X_test.values, y_test.values, tokenizer)
 
 def collate_fn(batch):
     input_ids = torch.stack([item['input_ids'] for item in batch])
@@ -44,63 +27,79 @@ def collate_fn(batch):
     labels = torch.tensor([item['label'] for item in batch], dtype=torch.long)
     return input_ids, attention_mask, labels
 
-train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True, collate_fn=collate_fn)
-test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False, collate_fn=collate_fn)
+df = pd.read_csv(CONFIG['dataset_path'])
+df['review'] = df['review'].apply(preprocess_text)
+df['sentiment'] = df['sentiment'].map({'positive': 1, 'negative': 0})
 
-# Create model
-embed_size = 100
-hidden_size = 128
-num_classes = 2
-vocab_size = tokenizer.vocab_size  # Tamaño del vocabulario del tokenizador
+tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+X_train, X_test, y_train, y_test = train_test_split(df['review'], df['sentiment'], test_size=0.2, random_state=42)
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-print('Use device:', device)
+train_dataset = ReviewDataset(X_train.values, y_train.values, tokenizer, CONFIG['max_len'])
+test_dataset = ReviewDataset(X_test.values, y_test.values, tokenizer, CONFIG['max_len'])
 
-model = SentimentModel(vocab_size, embed_size, hidden_size, num_classes).to(device)
+train_loader = DataLoader(train_dataset, batch_size=CONFIG['batch_size'], shuffle=True, collate_fn=collate_fn)
+test_loader = DataLoader(test_dataset, batch_size=CONFIG['batch_size'], shuffle=False, collate_fn=collate_fn)
 
-criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.parameters(), lr=0.001)
-
-def train_model(model, train_loader, criterion, optimizer, num_epochs=10):
+def train_model(model, train_loader, criterion, optimizer, scheduler, device, num_epochs=5, clip=1.0, accumulation_steps=4):
     model.train()
+
     for epoch in range(num_epochs):
         total_loss = 0
         correct = 0
         total = 0
 
-        for input_ids, attention_mask, labels in train_loader:
+        optimizer.zero_grad()
+        progress_bar = tqdm(train_loader, desc=f"Epoch {epoch+1}/{num_epochs}")
+
+        # for input_ids, attention_mask, labels in progress_bar:
+        for i, (input_ids, attention_mask, labels) in enumerate(progress_bar):
             input_ids, attention_mask, labels = input_ids.to(device), attention_mask.to(device), labels.to(device)
 
-            optimizer.zero_grad()
             outputs = model(input_ids, attention_mask)
             loss = criterion(outputs, labels)
             loss.backward()
-            optimizer.step()
+
+            torch.nn.utils.clip_grad_norm_(model.parameters(), clip)
             
+            if (i + 1) % accumulation_steps == 0:
+                optimizer.step()
+                optimizer.zero_grad()
+
             total_loss += loss.item()
             _, predicted = torch.max(outputs, 1)
             correct += (predicted == labels).sum().item()
             total += labels.size(0)
-        
-        accuracy = 100 * correct / total
-        print(f"Epoch {epoch+1}, Loss: {total_loss/len(train_loader):.4f}, Accuracy: {accuracy:.2f}%")
+            progress_bar.set_postfix(loss=total_loss/len(train_loader), accuracy=100*correct/total)
 
-train_model(model, train_loader, criterion, optimizer)
+        scheduler.step()
 
-def evaluate_model(model, test_loader):
+def evaluate_model(model, test_loader, device):
     model.eval()
-    correct = 0
-    total = 0
+    all_preds = []
+    all_labels = []
     with torch.no_grad():
         for input_ids, attention_mask, labels in test_loader:
             input_ids, attention_mask, labels = input_ids.to(device), attention_mask.to(device), labels.to(device)
-
             outputs = model(input_ids, attention_mask)
             _, predicted = torch.max(outputs, 1)
-            correct += (predicted == labels).sum().item()
-            total += labels.size(0)
-    print(f"Test Accuracy: {100 * correct / total:.2f}%")
+            all_preds.extend(predicted.cpu().numpy())
+            all_labels.extend(labels.cpu().numpy())
+    print(classification_report(all_labels, all_preds, target_names=['Negative', 'Positive']))
 
-evaluate_model(model, test_loader)
+# Create model
+model = SentimentModel(
+    vocab_size=tokenizer.vocab_size,
+    embed_size=CONFIG['embed_size'],
+    hidden_size=CONFIG['hidden_size'],
+    num_classes=CONFIG['num_classes'],
+    num_layers=CONFIG['num_layers']
+).to(CONFIG['device'])
 
-torch.save(model.state_dict(), "model.pth")
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.AdamW(model.parameters(), lr=CONFIG['learning_rate'], weight_decay=1e-4)
+scheduler = StepLR(optimizer, step_size=2, gamma=0.5)
+
+train_model(model, train_loader, criterion, optimizer, scheduler, CONFIG['device'], CONFIG['num_epochs'])
+evaluate_model(model, test_loader, CONFIG['device'])
+
+torch.save(model.state_dict(), CONFIG['model_path'])

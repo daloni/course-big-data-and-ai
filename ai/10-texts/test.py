@@ -2,17 +2,18 @@ import torch
 import pandas as pd
 from transformers import AutoTokenizer
 from SentimentModel import SentimentModel
+from config import CONFIG
 
-MODEL_PATH = "model.pth"
 tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
 
-embed_size = 100
-hidden_size = 128
-num_classes = 2
-vocab_size = tokenizer.vocab_size
+model = SentimentModel(
+    vocab_size=tokenizer.vocab_size,
+    embed_size=CONFIG['embed_size'],
+    hidden_size=CONFIG['hidden_size'],
+    num_classes=CONFIG['num_classes']
+).to(CONFIG['device'])
 
-model = SentimentModel(vocab_size, embed_size, hidden_size, num_classes)
-model.load_state_dict(torch.load(MODEL_PATH))
+model.load_state_dict(torch.load(CONFIG['model_path']))
 model.eval()
 
 def load_reviews_from_csv(file_path):
@@ -33,8 +34,8 @@ def predict_sentiment(review):
         return_tensors="pt"
     )
 
-    input_ids = encoding['input_ids']
-    attention_mask = encoding['attention_mask']
+    input_ids = encoding['input_ids'].to(CONFIG['device'])
+    attention_mask = encoding['attention_mask'].to(CONFIG['device'])
 
     with torch.no_grad():
         outputs = model(input_ids, attention_mask)
@@ -43,7 +44,7 @@ def predict_sentiment(review):
     return predicted.item()
 
 if __name__ == "__main__":
-    csv_path = "./data/IMDB_Dataset.csv"
+    csv_path = CONFIG['dataset_path']
     reviews, labels = load_reviews_from_csv(csv_path)
 
     correct = 0
