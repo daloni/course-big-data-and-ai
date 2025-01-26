@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 import pandas as pd
 import re
-from torch.optim.lr_scheduler import StepLR
+from torch.optim.lr_scheduler import ReduceLROnPlateau
 from sklearn.metrics import classification_report
 from torch.utils.data import DataLoader
 from sklearn.model_selection import train_test_split
@@ -32,7 +32,7 @@ df['review'] = df['review'].apply(preprocess_text)
 df['sentiment'] = df['sentiment'].map({'positive': 1, 'negative': 0})
 
 tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
-X_train, X_test, y_train, y_test = train_test_split(df['review'], df['sentiment'], test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(df['review'], df['sentiment'], test_size=0.2, random_state=20)
 
 train_dataset = ReviewDataset(X_train.values, y_train.values, tokenizer, CONFIG['max_len'])
 test_dataset = ReviewDataset(X_test.values, y_test.values, tokenizer, CONFIG['max_len'])
@@ -96,8 +96,9 @@ model = SentimentModel(
 ).to(CONFIG['device'])
 
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.AdamW(model.parameters(), lr=CONFIG['learning_rate'], weight_decay=1e-4)
-scheduler = StepLR(optimizer, step_size=2, gamma=0.5)
+optimizer = optim.AdamW(model.parameters(), lr=CONFIG['learning_rate'], weight_decay=1e-3)
+# scheduler = StepLR(optimizer, step_size=2, gamma=0.5)
+scheduler = ReduceLROnPlateau(optimizer, mode='min', patience=2, factor=0.5)
 
 train_model(model, train_loader, criterion, optimizer, scheduler, CONFIG['device'], CONFIG['num_epochs'])
 evaluate_model(model, test_loader, CONFIG['device'])
