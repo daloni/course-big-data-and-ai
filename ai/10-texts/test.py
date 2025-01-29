@@ -1,18 +1,11 @@
 import torch
 import pandas as pd
-from transformers import AutoTokenizer
-from SentimentModel import SentimentModel
+from transformers import AutoTokenizer, BertForSequenceClassification
 from config import CONFIG
 
 tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
 
-model = SentimentModel(
-    vocab_size=tokenizer.vocab_size,
-    embed_size=CONFIG['embed_size'],
-    hidden_size=CONFIG['hidden_size'],
-    num_classes=CONFIG['num_classes']
-).to(CONFIG['device'])
-
+model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2).to(CONFIG['device'])
 model.load_state_dict(torch.load(CONFIG['model_path']))
 model.eval()
 
@@ -27,19 +20,19 @@ def load_reviews_from_csv(file_path):
 
 def predict_sentiment(review):
     encoding = tokenizer(
-        review,
-        truncation=True,
+        str(review),
+        max_length=CONFIG['max_len'],
         padding='max_length',
-        max_length=128,
-        return_tensors="pt"
+        truncation=True,
+        return_tensors='pt'
     )
 
     input_ids = encoding['input_ids'].to(CONFIG['device'])
     attention_mask = encoding['attention_mask'].to(CONFIG['device'])
 
     with torch.no_grad():
-        outputs = model(input_ids, attention_mask)
-        _, predicted = torch.max(outputs, 1)
+        outputs = model(input_ids, attention_mask=attention_mask).logits
+        predicted = torch.argmax(outputs, dim=1)
 
     return predicted.item()
 
