@@ -1,22 +1,34 @@
-# R_CNN
+# Vehicles detection
 
-- RossGirshick 2015
+## Create a virtualenv
 
-Dos pasos: Detección + Classificación
+```bash
+virtualenv venv
+```
 
-1 - Crear una BoundingBox: Dónde empieza el objeto y cuanto ocupa
+## Execute environment
 
-Crea BoundingBoxes al azar, las va moviendo y va calculando el porcentaje que sea un objeto
+```bash
+source ./venv/bin/activate
+```
 
-## Microsoft sacó Dataset CoCo (Common objects in context)
+Then, install your dependencies inside the virtual environment
 
-- Iconic Object
-- Non iconic Object
+## Install dependencies
 
-[YOLO](https://arxiv.org/pdf/1506.02640)
+```bash
+pip install -r requirements.txt
+```
 
-Empresas de software libre: RoboFlow/Ultralitics
+## Generate video
 
-# Supervision
+```bash
+python app.py
+```
 
-- [https://supervision.roboflow.com](https://supervision.roboflow.com)
+## Deactivate environment
+
+```bash
+deactivate
+```
+
