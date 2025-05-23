@@ -1,14 +1,19 @@
 from stable_baselines3 import PPO
-from stable_baselines3.common.vec_env import DummyVecEnv, SubprocVecEnv, VecFrameStack, VecTransposeImage
-from train2 import make_env
+from stable_baselines3.common.vec_env import DummyVecEnv, VecFrameStack
+from train4 import make_env
 
 render_mode = "human"
 
+MODEL_PATH = "./ppo_carracing_20250521_0030.zip"
+# MODEL_PATH = "./logs/best_model/best_model"
+# VEC_NORMALIZED_MODEL_PATH = f"{MODEL_PATH[:-4]}_vecnormalize.pkl"
 env = DummyVecEnv([make_env(render_mode)])
 env = VecFrameStack(env, n_stack=8)
+# env = VecNormalize.load(VEC_NORMALIZED_MODEL_PATH, venv=env)
+# env = VecTransposeImage(env)
 
-# model = PPO.load("ppo_carracing")
-model = PPO.load("./logs/best_model/best_model", env=env)
+model = PPO.load(MODEL_PATH, env=env)
+# model = PPO.load("./logs/best_model/best_model", env=env)
 
 NUM_EPISODES = 5
 

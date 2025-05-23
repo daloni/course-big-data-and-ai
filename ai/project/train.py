@@ -97,5 +97,5 @@ model = PPO(
 #     policy_kwargs={"normalize_images": False}
 # )
 
-model.learn(total_timesteps=100_000, callback=eval_callback)
+model.learn(total_timesteps=1_000_000, callback=eval_callback)
 model.save("ppo_carracing")
